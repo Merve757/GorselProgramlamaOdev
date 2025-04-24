@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp4.MainPage"
+             Title="Ana Sayfa"
+             BackgroundColor="White">
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="30" Padding="80" VerticalOptions="Start">
+
+            <!-- Profil Resmi -->
+            <Frame 
+    WidthRequest="200"
+    HeightRequest="200"
+    CornerRadius="100"
+    Padding="0"
+    IsClippedToBounds="True"
+    BorderColor="LightGray"
+    HorizontalOptions="Center"
+    VerticalOptions="Center">
+
+                <Image Source="ben.jpg"
+           Aspect="AspectFill"
+           HorizontalOptions="Fill"
+           VerticalOptions="Fill"
+           WidthRequest="200"
+           HeightRequest="200" />
+            </Frame>
+
+
+            <Label 
+                Text="Merve BALCI"
+                FontSize="26"
+                FontAttributes="Bold"
+                HorizontalOptions="Center" />
+
+            <Label 
+                Text="22010310019"
+                FontSize="26"
+                FontAttributes="Bold"
+                HorizontalOptions="Center" />
+
+            <Label 
+                Text="Bartın Üniversitesi Bilgisayar Mühendisliği"
+                FontSize="16"
+                HorizontalOptions="Center" />
+
+            <Label 
+                Text="ÖDEV-2"
+                FontSize="20"
+                FontAttributes="Bold"
+                HorizontalOptions="Center"
+                Margin="0,20,0,0" />
+
+          
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

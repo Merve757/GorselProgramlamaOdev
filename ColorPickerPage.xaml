@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp4.ColorPickerPage"
+             BackgroundColor="#F8F8F8"
+             Title="Renk Seçici">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="25">
+
+            <!-- Başlık -->
+            <Label 
+                Text="🎨 Renk Seçici" 
+                FontSize="28" 
+                FontAttributes="Bold" 
+                HorizontalOptions="Center" 
+                TextColor="DarkSlateBlue" />
+
+            <!-- Renk Önizleme Kutusu -->
+            <Frame 
+                HeightRequest="{OnPlatform Android=150, iOS=150, WinUI=170}"
+                Padding="0"
+                BorderColor="#CCC"
+                CornerRadius="40"
+                HasShadow="True"
+                HorizontalOptions="FillAndExpand"
+                Margin="0,10,0,20"
+                BackgroundColor="White">
+                <Grid>
+                    <Rectangle x:Name="ColorPreview" Fill="BlueViolet" />
+                </Grid>
+            </Frame>
+
+            <!-- HEX Kod Etiketi -->
+            <Label 
+                x:Name="HexColorLabel" 
+                Text="Renk Kodu: #000000"
+                FontSize="18"
+                FontAttributes="Bold"
+                HorizontalOptions="Center"
+                TextColor="Black" />
+
+            <!-- Renk Ayarları -->
+            <VerticalStackLayout Spacing="16">
+
+                <!-- Kırmızı -->
+                <Label Text="Kırmızı (Red):" FontSize="18" FontAttributes="Bold" TextColor="#D32F2F" />
+                <Grid ColumnDefinitions="*, Auto">
+                    <Slider x:Name="RedSlider" Maximum="255" Minimum="0" Value="0" ValueChanged="OnColorSliderValueChanged" />
+                    <Label x:Name="RedLabel" Text="0" Grid.Column="1" VerticalOptions="Center" FontSize="16" TextColor="#D32F2F" />
+                </Grid>
+
+                <!-- Yeşil -->
+                <Label Text="Yeşil (Green):" FontSize="18" FontAttributes="Bold" TextColor="#388E3C" />
+                <Grid ColumnDefinitions="*, Auto">
+                    <Slider x:Name="GreenSlider" Maximum="255" Minimum="0" Value="0" ValueChanged="OnColorSliderValueChanged" />
+                    <Label x:Name="GreenLabel" Text="0" Grid.Column="1" VerticalOptions="Center" FontSize="16" TextColor="#388E3C" />
+                </Grid>
+
+                <!-- Mavi -->
+                <Label Text="Mavi (Blue):" FontSize="18" FontAttributes="Bold" TextColor="#1976D2" />
+                <Grid ColumnDefinitions="*, Auto">
+                    <Slider x:Name="BlueSlider" Maximum="255" Minimum="0" Value="0" ValueChanged="OnColorSliderValueChanged" />
+                    <Label x:Name="BlueLabel" Text="0" Grid.Column="1" VerticalOptions="Center" FontSize="16" TextColor="#1976D2" />
+                </Grid>
+            </VerticalStackLayout>
+
+            <!-- Butonlar -->
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="12" Margin="0,20,0,10">
+                <Button 
+                    x:Name="CopyButton"
+                    Text="Kopyala"
+                    Clicked="OnCopyClicked"
+                    Grid.Column="0"
+                    BackgroundColor="#007AFF"
+                    TextColor="White"
+                    CornerRadius="8"
+                    FontAttributes="Bold"
+                    FontSize="16" />
+
+                <Button 
+                    x:Name="RandomButton"
+                    Text="Rastgele Renk"
+                    Clicked="OnRandomClicked"
+                    Grid.Column="1"
+                    BackgroundColor="#34C759"
+                    TextColor="White"
+                    CornerRadius="8"
+                    FontAttributes="Bold"
+                    FontSize="16" />
+            </Grid>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

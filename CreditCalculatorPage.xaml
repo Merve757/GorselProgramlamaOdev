@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp4.CreditCalculatorPage"
+             BackgroundColor="#f5f5f5"
+             Title="Kredi Hesaplama">
+    <ScrollView>
+        <VerticalStackLayout Spacing="15" Padding="20">
+            <!-- En üstteki kredi hesaplama yazısı kaldırıldı -->
+
+            <Label Text="Kredi Türü:" FontAttributes="Bold" Margin="0,10,0,0" />
+            <Frame BorderColor="#e0e0e0" HasShadow="True" Padding="0" CornerRadius="8">
+                <Picker x:Name="CreditTypePicker" Title="Kredi türünü seçiniz" Margin="10,0">
+                    <Picker.Items>
+                        <x:String>İhtiyaç Kredisi</x:String>
+                        <x:String>Taşıt Kredisi</x:String>
+                        <x:String>Konut Kredisi</x:String>
+                        <x:String>Ticari Kredisi</x:String>
+                    </Picker.Items>
+                </Picker>
+            </Frame>
+
+            <!-- Renkli kutu kaldırıldı -->
+
+            <Label Text="Kredi Tutarı (TL):" FontAttributes="Bold" Margin="0,10,0,0" />
+            <Frame BorderColor="#e0e0e0" HasShadow="True" Padding="0" CornerRadius="8">
+                <Entry x:Name="CreditAmountEntry" Placeholder="Örnek: 100000" Keyboard="Numeric" Margin="10,0" />
+            </Frame>
+
+            <Label Text="Faiz Oranı (%):" FontAttributes="Bold" />
+            <Frame BorderColor="#e0e0e0" HasShadow="True" Padding="0" CornerRadius="8">
+                <Entry x:Name="InterestRateEntry" Placeholder="Örnek: 1.59" Keyboard="Numeric" Margin="10,0" />
+            </Frame>
+
+            <Label Text="Vade (Ay): " FontAttributes="Bold" />
+            <Grid ColumnDefinitions="*, Auto">
+                <Slider 
+                    x:Name="TermSlider" 
+                    Maximum="120" 
+                    Minimum="1" 
+                    Value="12"
+                    ValueChanged="OnTermSliderValueChanged"
+                    ThumbColor="#007BFF"
+                    MinimumTrackColor="#007BFF"
+                    MaximumTrackColor="#e0e0e0" />
+                <Frame 
+                    Grid.Column="1" 
+                    Padding="10,5"
+                    CornerRadius="5"
+                    BackgroundColor="#007BFF">
+                    <Label 
+                        x:Name="TermLabel" 
+                        Text="12 Ay" 
+                        TextColor="White"
+                        FontAttributes="Bold"
+                        VerticalOptions="Center" />
+                </Frame>
+            </Grid>
+
+            <Button 
+                x:Name="CalculateButton"
+                Text="HESAPLA"
+                Clicked="OnCalculateClicked"
+                HorizontalOptions="Fill"
+                FontAttributes="Bold"
+                FontSize="18"
+                TextColor="White"
+                BackgroundColor="#7623DF"
+                HeightRequest="50"
+                CornerRadius="25"
+                Margin="20,25" />
+
+            <Frame BorderColor="#007BFF" BackgroundColor="#f8f9fa" Padding="15" HasShadow="True" CornerRadius="10">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Kredi Hesaplama Sonucu" FontSize="20" FontAttributes="Bold" TextColor="#007BFF" HorizontalOptions="Center" Margin="0,0,0,10" />
+                    <Frame BackgroundColor="#e8f4ff" Padding="10" CornerRadius="5">
+                        <Label x:Name="MontlyPaymentLabel" Text="Aylık Ödeme: -" FontAttributes="Bold" />
+                    </Frame>
+                    <Frame BackgroundColor="#e8f4ff" Padding="10" CornerRadius="5">
+                        <Label x:Name="TotalPaymentLabel" Text="Toplam Ödeme: -" FontAttributes="Bold" />
+                    </Frame>
+                    <Frame BackgroundColor="#e8f4ff" Padding="10" CornerRadius="5">
+                        <Label x:Name="TotalInterestLabel" Text="Toplam Faiz: -" FontAttributes="Bold" />
+                    </Frame>
+                </VerticalStackLayout>
+            </Frame>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:local="clr-namespace:MauiApp4"
+       x:Class="MauiApp4.AppShell"
+       FlyoutBehavior="Flyout"
+       FlyoutBackgroundColor="White"
+       BackgroundColor="#4B0082"
+       Title="Ana Sayfa">
+
+    <!-- FlyoutHeader kısmını kaldırdım -->
+
+    <ShellContent 
+        Title="Ana Sayfa"
+        Icon="main.png"
+        ContentTemplate="{DataTemplate local:MainPage}" 
+        Route="MainPage" />
+
+    <ShellContent 
+        Title="Kredi Hesaplama"
+        Icon="kredi.png"
+        ContentTemplate="{DataTemplate local:CreditCalculatorPage}" 
+        Route="CreditCalculatorPage" />
+
+    <ShellContent 
+        Title="Vücut Kitle İndeksi"
+        Icon="vk.png"
+        ContentTemplate="{DataTemplate local:BMICalculatorPage}" 
+        Route="BMICalculatorPage" />
+
+    <ShellContent 
+        Title="Renk Seçici"
+        Icon="palette.png"
+        ContentTemplate="{DataTemplate local:ColorPickerPage}" 
+        Route="ColorPickerPage" />
+</Shell>

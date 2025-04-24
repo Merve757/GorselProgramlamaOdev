@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp4.BMICalculatorPage"
+             BackgroundColor="#f8f9fa"
+             Title="VKİ Hesaplayıcı">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+
+    
+
+            <!-- Giriş Bölümü -->
+            <Frame BorderColor="#e0e0e0" BackgroundColor="White" CornerRadius="10" Padding="20" HasShadow="True">
+                <VerticalStackLayout Spacing="20">
+                    <!-- Kilo Bölümü -->
+                    <Label Text="Kilo Bilgisi" 
+                           FontSize="18" 
+                           TextColor="#3498db" 
+                           FontAttributes="Bold"/>
+
+                    <VerticalStackLayout Spacing="10">
+                        <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="15">
+                            <Label Text="Kilonuz:" 
+                                  FontSize="16" 
+                                  VerticalOptions="Center"
+                                  Grid.Column="0"/>
+
+                            <Entry x:Name="WeightEntry" 
+                                  Text="70.0" 
+                                  TextChanged="OnWeightEntryTextChanged"
+                                  Grid.Column="1"
+                                  Keyboard="Numeric"
+                                  FontSize="16"/>
+
+                            <Label Text="kg" 
+                                  FontSize="16" 
+                                  VerticalOptions="Center"
+                                  Grid.Column="2"/>
+                        </Grid>
+
+                        <Slider x:Name="WeightSlider" 
+                               Minimum="30" 
+                               Maximum="200" 
+                               Value="70" 
+                               MinimumTrackColor="#3498db" 
+                               MaximumTrackColor="#e0e0e0"
+                               ThumbColor="#2980b9"
+                               ValueChanged="OnSliderValueChanged"/>
+
+                        <Grid ColumnDefinitions="*,*,*" ColumnSpacing="5">
+                            <Label Text="30 kg"
+                                  FontSize="12"
+                                  TextColor="#666"
+                                  Grid.Column="0"/>
+                            <Label Text="115 kg"
+                                  FontSize="12"
+                                  TextColor="#666"
+                                  HorizontalOptions="Center"
+                                  Grid.Column="1"/>
+                            <Label Text="200 kg"
+                                  FontSize="12"
+                                  TextColor="#666"
+                                  HorizontalOptions="End"
+                                  Grid.Column="2"/>
+                        </Grid>
+                    </VerticalStackLayout>
+
+                    <!-- Boy Bölümü -->
+                    <Label Text="Boy Bilgisi" 
+                           FontSize="18" 
+                           TextColor="#3498db" 
+                           FontAttributes="Bold"/>
+
+                    <VerticalStackLayout Spacing="10">
+                        <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="15">
+                            <Label Text="Boyunuz:" 
+                                  FontSize="16" 
+                                  VerticalOptions="Center"
+                                  Grid.Column="0"/>
+
+                            <Entry x:Name="HeightEntry" 
+                                  Text="170" 
+                                  TextChanged="OnHeightEntryTextChanged"
+                                  Grid.Column="1"
+                                  Keyboard="Numeric"
+                                  FontSize="16"/>
+
+                            <Label Text="cm" 
+                                  FontSize="16" 
+                                  VerticalOptions="Center"
+                                  Grid.Column="2"/>
+                        </Grid>
+
+                        <Slider x:Name="HeightSlider" 
+                               Minimum="100" 
+                               Maximum="220" 
+                               Value="170" 
+                               MinimumTrackColor="#3498db" 
+                               MaximumTrackColor="#e0e0e0"
+                               ThumbColor="#2980b9"
+                               ValueChanged="OnSliderValueChanged"/>
+
+                        <Grid ColumnDefinitions="*,*,*" ColumnSpacing="5">
+                            <Label Text="100 cm"
+                                  FontSize="12"
+                                  TextColor="#666"
+                                  Grid.Column="0"/>
+                            <Label Text="160 cm"
+                                  FontSize="12"
+                                  TextColor="#666"
+                                  HorizontalOptions="Center"
+                                  Grid.Column="1"/>
+                            <Label Text="220 cm"
+                                  FontSize="12"
+                                  TextColor="#666"
+                                  HorizontalOptions="End"
+                                  Grid.Column="2"/>
+                        </Grid>
+                    </VerticalStackLayout>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Sonuç Bölümü -->
+            <Frame x:Name="ResultFrame" BorderColor="#e0e0e0" BackgroundColor="#f1f9fe" CornerRadius="10" Padding="20" HasShadow="True">
+                <VerticalStackLayout Spacing="15">
+                    <Label Text="Hesaplama Sonucu" 
+                           FontSize="18" 
+                           TextColor="#3498db" 
+                           FontAttributes="Bold"
+                           HorizontalOptions="Center"/>
+
+                    <Grid ColumnDefinitions="*,*" ColumnSpacing="15" RowSpacing="15">
+                        <Frame BackgroundColor="White" CornerRadius="8" Grid.Column="0" Padding="15" HasShadow="False" BorderColor="#e0e0e0">
+                            <VerticalStackLayout>
+                                <Label Text="VKİ Değeri" 
+                                      FontSize="14" 
+                                      TextColor="#666"
+                                      HorizontalOptions="Center"/>
+                                <Label x:Name="BMIValueLabel" 
+                                      Text="22.49" 
+                                      FontSize="24" 
+                                      FontAttributes="Bold"
+                                      TextColor="#2980b9"
+                                      HorizontalOptions="Center"/>
+                            </VerticalStackLayout>
+                        </Frame>
+
+                        <Frame BackgroundColor="White" CornerRadius="8" Grid.Column="1" Padding="15" HasShadow="False" BorderColor="#e0e0e0">
+                            <VerticalStackLayout>
+                                <Label Text="Durum" 
+                                      FontSize="14" 
+                                      TextColor="#666"
+                                      HorizontalOptions="Center"/>
+                                <Label x:Name="BMICategoryLabel" 
+                                      Text="Normal" 
+                                      FontSize="20"
+                                      FontAttributes="Bold"
+                                      TextColor="#27ae60"
+                                      HorizontalOptions="Center"/>
+                            </VerticalStackLayout>
+                        </Frame>
+                    </Grid>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Kategori Tablosu -->
+            <Frame BorderColor="#e0e0e0" BackgroundColor="White" CornerRadius="10" Padding="20" HasShadow="True">
+                <VerticalStackLayout Spacing="15">
+                    <Label Text="VKİ Kategorileri" 
+                           FontSize="18" 
+                           TextColor="#3498db" 
+                           FontAttributes="Bold"
+                           HorizontalOptions="Center"/>
+
+                    <Grid ColumnDefinitions="Auto,*" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto" RowSpacing="8" ColumnSpacing="15">
+                        <!-- Başlık Satırı -->
+                        <Frame BackgroundColor="#3498db" Grid.Row="0" Grid.ColumnSpan="2" Padding="10" CornerRadius="5">
+                            <Grid ColumnDefinitions="Auto,*">
+                                <Label Text="VKİ Aralığı" Grid.Column="0" FontAttributes="Bold" FontSize="14" TextColor="White"/>
+                                <Label Text="Kategori" Grid.Column="1" FontAttributes="Bold" FontSize="14" TextColor="White" Margin="20,0,0,0"/>
+                            </Grid>
+                        </Frame>
+
+                        <!-- İçerik Satırları -->
+                        <Label Text="&lt; 16" Grid.Row="1" Grid.Column="0" Margin="10,0,0,0"/>
+                        <Label Text="İleri Düzeyde Zayıf" Grid.Row="1" Grid.Column="1" TextColor="#c0392b"/>
+
+                        <Label Text="16 - 16.99" Grid.Row="2" Grid.Column="0" Margin="10,0,0,0"/>
+                        <Label Text="Orta Düzeyde Zayıf" Grid.Row="2" Grid.Column="1" TextColor="#e74c3c"/>
+
+                        <Label Text="17 - 18.49" Grid.Row="3" Grid.Column="0" Margin="10,0,0,0"/>
+                        <Label Text="Hafif Düzeyde Zayıf" Grid.Row="3" Grid.Column="1" TextColor="#e67e22"/>
+
+                        <Label Text="18.5 - 24.99" Grid.Row="4" Grid.Column="0" Margin="10,0,0,0"/>
+                        <Label Text="Normal" Grid.Row="4" Grid.Column="1" TextColor="#27ae60"/>
+
+                        <Label Text="25 - 29.99" Grid.Row="5" Grid.Column="0" Margin="10,0,0,0"/>
+                        <Label Text="Hafif Şişman / Fazla Kilolu" Grid.Row="5" Grid.Column="1" TextColor="#f39c12"/>
+
+                        <Label Text="30 - 34.99" Grid.Row="6" Grid.Column="0" Margin="10,0,0,0"/>
+                        <Label Text="1. Derecede Obez" Grid.Row="6" Grid.Column="1" TextColor="#e67e22"/>
+
+                        <Label Text="35 - 39.99" Grid.Row="7" Grid.Column="0" Margin="10,0,0,0"/>
+                        <Label Text="2. Derecede Obez" Grid.Row="7" Grid.Column="1" TextColor="#e74c3c"/>
+
+                        <Label Text="≥ 40" Grid.Row="8" Grid.Column="0" Margin="10,0,0,0"/>
+                        <Label Text="3. Derecede Obez / Morbid Obez" Grid.Row="8" Grid.Column="1" TextColor="#c0392b"/>
+                    </Grid>
+                </VerticalStackLayout>
+            </Frame>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
